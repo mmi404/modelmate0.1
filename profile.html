@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ModelMate - Profile</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+        // Toggle sidebar visibility on small screens
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('closed');
+        }
+        // Toggle sidebar collapse on desktop
+        function toggleSidebarCollapse() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+        // Close sidebar on link click (small screens)
+        function closeSidebarOnLinkClick() {
+            const sidebar = document.querySelector('.sidebar');
+            if (window.innerWidth <= 900 && !sidebar.classList.contains('closed')) {
+                sidebar.classList.add('closed');
+            }
+        }
+        // Add event listeners to nav links
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.sidebar nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeSidebarOnLinkClick);
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">ModelMate</div>
+        <button class="sidebar-toggle" aria-label="Toggle sidebar" onclick="toggleSidebarCollapse()">☰</button>
+        <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleSidebar()">☰</button>
+        <div class="search-bar">
+            <input type="text" placeholder="Search AI Models..." />
+        </div>
+        <div class="user-profile" title="User Profile">U</div>
+    </header>
+    <div class="wrapper">
+        <aside class="sidebar closed">
+            <nav>
+                <ul>
+                    <li><a href="index.html"><span>Home</span></a></li>
+                    <li><a href="category.html"><span>Categories</span></a></li>
+                    <li><a href="compare.html"><span>Compare Models</span></a></li>
+                    <li><a href="post-review.html"><span>Post a Review</span></a></li>
+                    <li><a href="profile.html" class="active"><span>Profile</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h2>User Profile: Md. Mahi Islam</h2>
+            <div class="card">
+                <p><strong>Member since:</strong> January 2023</p>
+                <p><strong>Total Reviews:</strong> 12</p>
+                <p><strong>Total Problems Reported:</strong> 3</p>
+            </div>
+            <div class="card">
+                <h3>Recent Contributions</h3>
+                <ul>
+                    <li>Review on Model A - Excellent accuracy and speed.</li>
+                    <li>Reported problem on Model B - Slow processing on large datasets.</li>
+                    <li>Review on Model C - Easy to use and reliable.</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2025 ModelMate. All rights reserved.</p>
+    </footer>
+</body>
+</html>
